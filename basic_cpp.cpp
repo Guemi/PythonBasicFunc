@@ -17,5 +17,6 @@ int main() {
     for(int i=0;i<n;i++){
         cout<<array0[n-1-i]<<" ";
     }
+    delete [] array0;
     return 0;
 }
