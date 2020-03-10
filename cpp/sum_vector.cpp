@@ -9,7 +9,7 @@ class Solution {
         vector<int> positions {};
         map<int, int> hashTable{};
         for(int i{};i<nums.size();i++){ 
-            cout<<"KEY: "<<nums[i]<<" - VALUE: "<<i<<endl;
+            //cout<<"KEY: "<<nums[i]<<" - VALUE: "<<i<<endl;
             hashTable.insert({nums[i],i});
         }
         for(int j{};j<nums.size();j++){
@@ -17,7 +17,7 @@ class Solution {
             if(hashTable.count(complement) && hashTable.at(complement) != j){
                 positions.push_back(j);
                 positions.push_back(hashTable.at(complement));
-                cout<<j<<" - "<<hashTable.at(complement)<<endl;
+                //cout<<j<<" - "<<hashTable.at(complement)<<endl;
                 return positions;
             }
         }
@@ -31,11 +31,25 @@ class Solution {
                 if(nums[j] == target - nums[i]){
                     positions.push_back(i);
                     positions.push_back(j);
-                    cout<<i<<" - "<<j<<endl;
+                    //cout<<i<<" - "<<j<<endl;
                     return positions;
                 }                
             }
         }
+        return positions;
+    }
+    vector<int> twoSum3(vector<int>& nums, int target){
+        vector<int> positions {};
+        map<int, int> hashTable {};
+        for(int i{};i<nums.size();i++){
+            int complement = target - nums[i];
+            if(hashTable.count(complement)){
+                positions.push_back(hashTable.at(complement));
+                positions.push_back(i);
+                return positions;
+            }
+            hashTable.insert({nums[i],i});
+        }   
         return positions;
     }
 };
@@ -45,9 +59,14 @@ int main(){
     cout<<"<< Sum of two numbers >>"<<endl;
     Solution s1;
     vector<int> in_test = {1,3,5,6,2,7,9,13,8};
+    vector<int> vec_res {};
     s1.twoSum(in_test,11);
     s1.twoSum2(in_test,11);
+    vec_res = s1.twoSum2(in_test,96);
 
+    for(auto v : vec_res){
+        cout<<v<<endl;
+    }
 
 
 
