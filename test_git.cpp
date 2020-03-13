@@ -11,11 +11,9 @@ public:
         string IntStr {}; 
         bool isSigned = false;
         long long intRev {};
-        long long unsignedX {};
-        unsignedX = llabs(x);
-        
-        IntStr = to_string(unsignedX);
-        if(x != unsignedX){
+        intRev = llabs(x);
+        IntStr = to_string(intRev);
+        if(x != intRev){
             isSigned = true;
         }else{
             isSigned = false;
@@ -27,9 +25,6 @@ public:
         }
         if((intRev >= INT_MIN) && (intRev <= INT_MAX)){
             return intRev;
-          
-
-            
         }
         return 0;
     }
