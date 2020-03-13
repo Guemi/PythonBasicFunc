@@ -10,30 +10,28 @@ public:
     int reverse(int x) {
         string IntStr {}; 
         bool isSigned = false;
-        int intRev {};
-        if((x >= -2147483648) && (x <= 2147483647)){
-            IntStr = to_string(abs(x));
-            if(x != abs(x)){
-                isSigned = true;
-            }else{
-                isSigned = false;
-            }
-            std::reverse(IntStr.begin(),IntStr.end());
-            intRev = std::stoi(IntStr);
-            if(isSigned){
-                intRev = intRev * (-1);
-            }
+        long long intRev {};
+        long long unsignedX {};
+        unsignedX = llabs(x);
+        
+        IntStr = to_string(unsignedX);
+        if(x != unsignedX){
+            isSigned = true;
+        }else{
+            isSigned = false;
+        }
+        std::reverse(IntStr.begin(),IntStr.end());
+        intRev = std::stoll(IntStr);    
+        if(isSigned){
+            intRev = intRev * (-1);
+        }
+        if((intRev >= INT_MIN) && (intRev <= INT_MAX)){
+            return intRev;
+          
 
             
-        }else{
-            cout<<" ----------";
-            return 0;
         }
-
-        // for(auto num : IntStr){
-        //     cout<<num<<" ";
-        // }
-        return intRev;
+        return 0;
     }
 };
 
